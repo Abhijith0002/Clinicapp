@@ -1,0 +1,17 @@
+
+<div *ngIf="patient" class="profile-container">
+  <button class="btn btn-sm btn-outline-success"  [routerLink]="['/receptionist/recepdashboard']">Go Back</button>
+    <h3 class="text-secondary">{{ patient.registernumber }}</h3>
+    <div class="profile-info">
+      <p><strong>Registration number:</strong> {{ patient.registernumber }}</p>
+      <p><strong>Full Name: </strong> {{ patient.fullname }}</p>
+      <p><strong>Gender:</strong> {{ patient.gender }}</p>
+      <p><strong>bloodgroup</strong> {{ patient.bloodgroup }}</p>
+      <p><strong>Date of birth</strong> {{ patient.dateofbirth  | date: 'dd-MM-yyyy' }}</p>
+      <p><strong>Phone Number</strong> {{ patient.mobile }}</p>
+      <p><strong>Address:</strong> {{ patient.address }}</p> <!-- You may choose to implement password visibility toggle -->
+      <p><strong>Email: </strong> {{ patient.email }}</p>
+
+    </div>
+  </div>
+  

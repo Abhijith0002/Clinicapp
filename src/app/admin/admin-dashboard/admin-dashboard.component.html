@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Clinical Management System</title>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+
+  <main>
+    <div class="button-container">
+      <button [routerLink]="['/admin/list']">List Staffs</button>&nbsp;&nbsp;
+      <button [routerLink]="['/admin/add']">Add Staff</button>&nbsp;&nbsp;
+      <button [routerLink]="['/admin/listpatients']">List patients</button>&nbsp;&nbsp;
+      <button [routerLink]="['/admin/appoinments']">Appoinments</button>&nbsp;&nbsp;
+      <button [routerLink]="['/admin/logindetails']">Login Details</button>&nbsp;&nbsp;
+      <button (click)="logout()">Logout</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2023 Clinical Management System. All rights reserved.
+  </footer>
+</body>
+</html>
+
+<router-outlet></router-outlet>

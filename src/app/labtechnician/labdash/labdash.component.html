@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAB TECHNICIAN Dashboard</title>
+</head>
+<body>
+  <header>
+    <h1>Lab Technician Dashboard</h1>
+  </header>
+
+
+  <main>
+    <div class="button-container">
+      <button [routerLink]="['/labtechnician/test_add']">Add Tests</button>&nbsp;&nbsp;
+      <button [routerLink]="['/labtechnician/lab_list']">List Tests</button>&nbsp;&nbsp;
+      <button [routerLink]="['/labtechnician/test_to_done']">Pending Tests</button>&nbsp;&nbsp;
+      <button [routerLink]="['/labtechnician/report_list']">Report List</button>&nbsp;&nbsp;
+
+      <button (click)="logout()">Logout</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2023 Clinical Management System. All rights reserved.
+  </footer>
+</body>
+</html>
+
+<router-outlet></router-outlet>
+
+
+

@@ -1,0 +1,17 @@
+<br><br><button class="home-button" [routerLink]="['/doctor/list']">Go back</button>
+<div *ngIf="patient" class="profile-container">
+    <div class="profile-info">
+      <p><strong>Full Name: </strong> {{ patient.fullname }}</p>
+      <p><strong>Gender:</strong> {{ patient.gender }}</p>
+      <p><strong>bloodgroup</strong> {{ patient.bloodgroup }}</p>
+      <p><strong>Date of birth</strong> {{ patient.dateofbirth  | date: 'dd-MM-yyyy' }}</p>
+      <p><strong>Phone Number</strong> {{ patient.mobile }}</p>
+      <p><strong>Address:</strong> {{ patient.address }}</p> <!-- You may choose to implement password visibility toggle -->
+      <p><strong>Email: </strong> {{ patient.email }}</p>
+      <div class="button-container">
+        <button class="hom-button" [routerLink]="['/doctor/add-observation']">Add observation</button>&nbsp;&nbsp;
+        <button class="hom-button" [routerLink]="['/doctor/history', { patientName: patient.fullname, patientId: patient.id }]">View history</button>&nbsp;&nbsp;
+    </div>
+    </div>
+  </div>
+  

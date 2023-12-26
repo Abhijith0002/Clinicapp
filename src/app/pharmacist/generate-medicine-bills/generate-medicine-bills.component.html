@@ -1,0 +1,123 @@
+<br>
+<body>
+    <div class="invoice-box" *ngIf="medicineHistory">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png" style="width: 100%; max-width: 300px" />
+                            </td>
+                            <td>
+                                Invoice: {{ medicineHistory.id }}<br />
+                                Date: {{ medicineHistory.dateofvisit | date:'short' }}<br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Sparksuite, Inc.<br />
+                                12345 Sunny Road<br />
+                                Sunnyville, CA 12345
+                            </td>
+                            <td>
+                                Patient Name: {{ medicineHistory.patient_name }} <br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>Department: Pharmacist</td>
+            </tr>
+            <tr class="details">
+                <td>MRD No: 23/0001233
+                    <br>
+                    GST No: 32AAECT1159Q1ZI
+                </td>
+                <td></td>
+            </tr>
+            <tr class="heading">
+                <td>Item</td>
+                <td>Quantity</td>
+                <td>Unit Price</td>
+                <td>Total</td>
+            </tr>
+            
+              <!-- <ng-container *ngFor="let prescription of medicineHistory.prescription_detai; let i = index">
+                <tr class="item">
+                  <td>{{ prescription.medicine_name }}</td>
+                  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                  <td >
+                    <input type="number" value="0" [(ngModel)]="pharmacistservice.formMedicineHistoryData.quantity" />
+                  </td>
+                </form>
+                
+                  <td>{{ prescription.medicine_per_price }}</td>
+                    <td >
+                    {{ (+prescription.quantity || 0) * (+prescription.medicine_per_price || 0) }}
+                    </td>
+
+                  
+                </tr>
+              </ng-container> -->
+
+              <!-- <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <ng-container *ngFor="let prescription of medicineHistory.prescription_detai; let i = index">
+                  <tr class="item">
+                    <td>{{ pharmacistservice.formMedicineHistoryData.prescription_detai[i].medicine_name }}</td>
+                      <input type="number" name="quantity_{{i}}" [(ngModel)]="pharmacistservice.formMedicineHistoryData.prescription_detai[i].quantity" />
+                    <td>{{ prescription.medicine_per_price }}</td>
+                    <td>
+                      {{ (+prescription.quantity || 0) * (+prescription.medicine_per_price || 0) }}
+                    </td>
+                  </tr>
+                </ng-container>
+              </form>
+               -->
+               <tr *ngFor="let prescription of pharmacistservice.formMedicineHistoryData.prescription_detai; let i = index">
+                <td>
+                    {{ prescription.medicine_name }}
+                </td>
+                <td>
+                    <input type="number" name="quantity_{{i}}" [(ngModel)]="prescription.quantity" />
+                </td>
+                <td>
+                    {{ prescription.medicine_per_price }}
+                </td>
+                <td>
+                    {{ (+prescription.quantity || 0) * (+prescription.medicine_per_price || 0) }}
+                  </td>
+               </tr>
+              
+
+              
+            
+            
+            <!-- <td>
+                    <input type="number" [(ngModel)]="medicineQuantities[i].quantity" />
+                  </td> -->
+                  <!-- <td>{{ getUnitPrice(detail.medicine_name) | currency:'USD':'symbol':'1.2-2' || 'N/A' }}</td> -->
+                   <!-- Optionally, you can display the total cost for each medicine -->
+                  <!-- <td>${{ (medicineQuantities[i].quantity || 0) * (getUnitPrice(detail) || 0) }}</td>  -->
+    
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td>Total</td>
+                <td>${{ calculateTotal() }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="button-container">
+        <button class="home-button" (click)="submit()">Submit</button>&nbsp;
+        <button class="home-button" (click)="goBack()">Go back</button>&nbsp;
+        <button class="home-button" (click)="printInvoice()">Print Invoice</button>
+    </div>
+</body>

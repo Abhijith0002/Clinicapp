@@ -1,0 +1,45 @@
+<div class="container">
+    <button class="home-button" [routerLink]="['/doctor/doctordashboard']">Go back</button>
+    <h1 class="text-secondary">Pending Test</h1>
+    <br>
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>ID</th>
+          <th>Date of Visit</th>
+          <th>OBSERVATIONS</th>
+          <th>DIAGNOSIS</th>
+        <th>Prescribed medicine</th>
+          <th>Selected Tests</th>
+          </tr>
+          <tr *ngFor="let history of doctorService.medicineHistoryList | paginate:{itemsPerPage:4,currentPage:p}">
+            <td>{{ history.id }}</td>
+          <td>{{ history.dateofvisit }}</td>
+          <td>{{ history.observation_details}}</td>
+          <td>{{ history.diagnosis_details }}</td>
+          <td>
+            <ng-container>
+                <div class="prescription-details">
+                    <ul>
+                        <li *ngFor="let detail of history.prescription_detai">
+                            <div class="medicine-details">
+                                <span class="medicine-name">{{ detail.medicine_name }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+        </td>
+          <td>{{ history.choose_test.join(', ') }}</td>
+        
+          
+           
+            
+         
+        </tbody>
+      </table>
+      <br>
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>

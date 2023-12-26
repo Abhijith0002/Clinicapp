@@ -1,0 +1,38 @@
+<button class="home-button" [routerLink]="['/admin/admindashboard']">Go back</button>
+<div class="container">
+    <h1>Patient List</h1>
+    <div class="container">
+      <div class="header">
+          <div class="form-control">
+                  <input class="form-control" type="text" placeholder="Search by name...."[(ngModel)]="searchTerm">
+          </div>
+      </div>
+  </div>
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>Reg.No</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Blood Group</th>
+            <th>Mobile</th>
+            <th>E-mail</th>
+          </tr>
+          <tr *ngFor="let p of adminService.patients |filter:searchTerm| paginate:{itemsPerPage:5,currentPage:p}">
+            <td>{{p.registernumber}}</td>
+            <td>{{p.fullname}}</td>
+            <td>{{p.gender}}</td>
+            <td>{{p.dateofbirth |  date : "dd-MMM-yyyy" }}</td>
+            <td>{{p.age }}</td>
+            <td>{{p.bloodgroup}}</td>
+            <td>{{p.mobile}}</td>
+            <td>{{p.email}}</td>
+          <tr>
+        </tbody>
+      </table>
+      <br><br>
+      <div class="pagination-controls">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+</div>

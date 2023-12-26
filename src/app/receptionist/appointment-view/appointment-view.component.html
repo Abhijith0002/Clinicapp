@@ -1,0 +1,23 @@
+
+
+
+<div *ngIf="appointment" class="profile-container">
+  <button class="btn btn-sm btn-outline-success"  [routerLink]="['/receptionist/recepdashboard']">Go Back</button>
+  <h3 class="text-secondary">Appointment Details</h3>
+  <div class="profile-info">
+    <hr>
+    <p>Token: {{ appointment.token }}</p>
+    <p>Patient Name: {{ appointment.patient_name }}</p>
+    <p>Date of Visit: {{ appointment.date_of_visit | date:'short' }}</p>
+    <p>Doctor Name: {{ appointment.doctor_name }}</p>
+    <p>Doctor Specialization: {{ appointment.specialization }}</p>
+  
+  </div>
+  <div class="form-group print-button-container">
+    <a [routerLink]="['/receptionist/appointment-bill',appointment.id]" role="button">
+    <button class="btn btn-success w-100 mb-2" name="submit" 
+    type="submit">Print Appointment Bill</button></a>
+    
+    
+</div>
+</div>

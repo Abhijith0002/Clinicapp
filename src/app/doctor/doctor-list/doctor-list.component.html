@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="text-secondary">Appointments</h1><button class="home-button" [routerLink]="['/doctor/doctordashboard']">Go back</button>
+  
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>TOKEN ID</th>
+            <th>Patient name</th>
+            <th>Date of visit</th>
+            <th>Action</th>
+            
+
+          </tr>
+          <tr *ngFor="let p of receptionistService.appointments | paginate:{itemsPerPage:4,currentPage:p}">
+            <td>{{p.token}}</td>
+            <td>{{p.patient_name}}</td>
+            <td>{{p.date_of_visit}}</td>
+            <td>
+              <div class="btn-group" role="group">
+                &nbsp;
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-primary" (click)="viewAppointment(p)">view</button>
+                </div>
+            </div>
+            
+
+
+          </td>
+          <tr>
+           
+            
+         
+        </tbody>
+      </table>
+      <br>
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+      <br>
+      <!-- <div class="pagination-controls">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+   
+    </div> -->

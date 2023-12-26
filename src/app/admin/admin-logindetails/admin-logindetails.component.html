@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="center-button">
+        <input class="print-all-page" type="button" value="Print this page" onClick="window.print()">&nbsp;
+        <button class="print-all-page" [routerLink]="['/admin/admindashboard']">Go back</button>
+    </div>
+    <div *ngIf="loginDetails && loginDetails.length > 0">
+      <h2>Login Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Staff Name</th>
+            <th>Staff Role</th>
+            <th>Login Time</th>
+            <th>Logout Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of loginDetails |paginate:{itemsPerPage:8,currentPage:staff}">
+            <td>{{ log.user }}</td>
+            <td>{{ log.staff_name }}</td>
+            <td>{{ log.staff_role }}</td>
+            <td>{{ log.login_time | date:'dd-MM-yyyy hh:mm' }}</td>
+            <td>{{ log.logout_time | date:'dd-MM-yyyy hh:mm' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+
+    <div class="pagination-container">
+        <pagination-controls (pageChange)="staff = $event"></pagination-controls>
+    </div>
+
+    <div *ngIf="!loginDetails || loginDetails.length === 0">
+      <p>No login details available.</p>
+    </div>
+    
+    </div>
+    

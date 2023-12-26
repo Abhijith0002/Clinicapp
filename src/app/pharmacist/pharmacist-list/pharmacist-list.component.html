@@ -1,0 +1,55 @@
+<div class="btn-container">
+    <a [routerLink]="['/pharmacist/medicine-add']" role="button"  class="add-button" >
+        Add medicine
+    </a>
+    <a [routerLink]="['/pharmacist/pharmacistdashboard']" role="button" class="home-button">
+        Go back
+    </a>
+</div>
+
+<div class="container"> 
+    <div class="header"><br>
+        <div class="form-control">
+            <input class="form-control" type="text" placeholder="Enter text here..." [(ngModel)]="searchTerm">
+        </div>
+    </div>   
+    <table>
+        <thead>
+            <th>id</th>
+            <th>medicine name</th>
+            <th>Description</th>
+            <th>stock quantity</th>
+            <th>price per unit</th>
+            <th>is active</th>
+            <th>Availability</th>
+            <th>options</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of pharmacistservice.medicines | filter:searchTerm | paginate: { itemsPerPage: 4, currentPage: p} ">
+                <td>{{p.id}}</td>
+                <td>{{p.medicine_name}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.stock_quantity}}</td>
+                <td>{{p.price_per_unit}}</td>
+                <td>{{p.is_active}}</td>
+                <td>
+                    <!-- Check if the stock quantity is zero -->
+                    <ng-container *ngIf="p.stock_quantity === 0; else availableMedicine">
+                      <span style="color: red;">Unavailable</span>
+                    </ng-container>
+                    <ng-template #availableMedicine>
+                      <span style="color: green;">Available</span>
+                    </ng-template>
+                  </td>
+                <td>
+                    <button class="btn btn-disable" (click)="disableMedicine(p.id)">Disable</button>&nbsp;
+                    <button class="btn btn-edit" style="margin-left: 10px;" (click)="updatemedicinedetails(p)">Edit</button>
+                </td>
+            </tr>
+        </tbody>   
+    </table><br>
+    <div class="footer">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

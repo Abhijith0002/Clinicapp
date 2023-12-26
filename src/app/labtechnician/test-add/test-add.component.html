@@ -1,0 +1,60 @@
+<a class="home-button" [routerLink]="['/labtechnician/labdashboard']">Go Back</a>
+<div class="container">
+    <h3 class="text-secondary">Add Test</h3>
+    <hr>
+
+
+
+    <form name="frmPosts" #form="ngForm" autocomplete="off"
+        (ngSubmit)="onSubmit(form)">
+<div class="form-group">
+    <input type="hidden" readonly name="id" [(ngModel)] = "labTechniciantService.formTestData.id">
+</div>
+
+<div class="form-group">
+    <label>Full Name</label>
+    <input name="name" #name="ngModel"
+    [(ngModel)]="labTechniciantService.formTestData.name"
+    class="form-control shadow-none border-success" placeholder="Enter Test Name" minlength="3"
+    maxlength="25" pattern="[a-zA-Z ]+" required>
+    <div class="validation-error" *ngIf="name.touched &&name.errors">
+        <div *ngIf="name.errors['required']">Full Name is required</div>
+        <div *ngIf="name.errors['pattern']">Only alphabets and spaces are allowed</div>
+    </div>
+</div>
+<br>
+
+<div class="form-group">
+    <label>Description</label>
+    <div class="form-floating mb-10">
+    <input name="description" #description="ngModel" [(ngModel)]="labTechniciantService.formTestData.description"
+        class="form-control shadow-none border-success" placeholder=""  required >
+    <div class="validation-error" *ngIf="description.touched && description.invalid">
+        <div>Description is required</div>
+    </div>
+    </div>
+</div>
+<br>
+
+
+
+
+    <div class="form-group">
+        <label>Price</label>
+        <input name="price" #price="ngModel" [(ngModel)]="labTechniciantService.formTestData.price"
+            class="form-control shadow-none border-success" placeholder=""  required >
+        <div class="validation-error" *ngIf="price.touched && price.invalid">
+            <div>Price is required</div>
+        </div>
+    </div>
+
+<br>
+
+
+<br>
+<div class="form-group">
+    <button class="btn btn-success w-100 mb-2" name="submit" 
+    type="submit">Add Test</button>
+</div>
+    </form>
+</div>

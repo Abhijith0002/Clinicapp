@@ -1,0 +1,88 @@
+
+<div class="container">
+    <h3 class="text-success">Add Appointment</h3>
+    <hr>
+
+    <form name="frmPosts" #form="ngForm" autocomplete="off"
+        (ngSubmit)="onSubmit(form)">
+<div class="form-group">
+    <input type="hidden" readonly name="id" [(ngModel)] = "receptionistService.formAppointmentsData.id">
+</div>
+
+<br>
+<div class="form group">
+    <label>Select Patient Registration Number:</label>
+    <select name="patient" id="patient"
+    class="form-control shadow-none border-success" required
+    #patient="ngModel"
+    [(ngModel)] = "receptionistService.formAppointmentsData.patient">
+    <option value=0 disabled>Select Patient</option>
+    <option *ngFor="let patient of receptionistService.patients"
+    value="{{patient.id}}">{{patient.registernumber}}-{{patient.fullname}}</option>
+</select>
+<div class="validation-error" *ngIf="patient.touched&& patient.invalid">
+    <div>Required</div>
+</div>
+</div>
+<br>
+
+<div class="form group">
+    <label>Select Available Doctor:</label>
+    <select name="doctor" id="doctor"
+    class="form-control shadow-none border-success" required
+    #doctor="ngModel"
+    [(ngModel)] = "receptionistService.formAppointmentsData.doctor">
+    <option value=0 disabled>Choose Available Doctor</option>
+    <option *ngFor="let doc of receptionistService.avaliabledoc"
+    value="{{doc.id}}">{{doc.doctor_name}}</option>
+</select>
+<div class="validation-error" *ngIf="doctor.touched&& doctor.invalid">
+    <div>Required</div>
+</div>
+</div>
+<br>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group" style="margin-left: 40px; margin-right: 20px;">
+            <a [routerLink]="['/receptionist/recepdashboard']" role="button">
+                <button class="btn btn-danger w-100 mb-2" type="submit">Cancel</button>
+            </a>
+        </div>
+        
+    </div>
+    <div class="col-md-6">
+        <div class="form-group" style="margin-left: 5px; margin-right: 40px;">
+            <button class="btn btn-success w-100 mb-2" name="submit" type="submit" [disabled]="!form.valid">Add Appointment</button>
+        </div>
+        
+    </div>
+
+   
+</div>
+
+<br>
+<h3 class="text-secondary">Available Doctors</h3>
+
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr> 
+                    <th>Doctor Name</th>
+                    <th>Specilization</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- | filter:searchTerm -->
+                <tr *ngFor = "let p of receptionistService.avaliabledoc ">
+                    <td>{{p.doctor_name}}</td>
+                    <td>{{p.specialization}}</td>   
+                </tr>
+            </tbody>
+        </table> 
+
+
+
+
+

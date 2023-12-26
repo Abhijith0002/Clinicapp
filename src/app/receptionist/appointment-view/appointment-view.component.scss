@@ -1,0 +1,36 @@
+.user-row {
+  margin-bottom: 14px;
+}
+
+.table-user-information > tbody > tr {
+  border-top: 1px solid #ccc;
+}
+
+.table-user-information > tbody > tr:first-child {
+  border-top: 0;
+}
+
+.table-user-information > tbody > tr > td {
+  border-top: 0;
+}
+
+.panel {
+  margin-top: 20px;
+}
+.profile-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.profile-info {
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+}

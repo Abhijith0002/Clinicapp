@@ -1,0 +1,42 @@
+<!-- <div class="container">
+    <div class="header">
+        <div class="form-control">
+            <input class="form-control" type="text" placeholder="enter the text here...." [(ngModel)]="searchTerm" >
+        </div>
+    </div>
+</div> --><br>
+<div class="container">
+    <h1 class="text-secondary">Staff List</h1><button class="home-button" [routerLink]="['/admin/admindashboard']">Go back</button>
+        <input class="form-control" type="text" placeholder="enter the text here...." [(ngModel)]="searchTerm">
+    <table class="table table-bordered table-striped">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Date of Joining</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let staff of adminService.staffs| filter: searchTerm | paginate:{itemsPerPage:4,currentPage:staff}">
+                <td>{{ staff.id }}</td>
+                <td>{{ staff.name }}</td>
+                <td>{{ staff.role }}</td>
+                <td>{{ staff.date_of_joining | date: 'dd-MM-yyyy' }}</td>
+                <td>{{ staff.is_active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger" (click)="viewMore(staff)" >View More</button>&nbsp;&nbsp;
+                    <button class="btn btn-sm btn-outline-warning" (click)="updatePosts(staff)" >edit staff</button>&nbsp;&nbsp;
+                    <button class="btn btn-sm btn-outline-danger" (click)="toggleStaffStatus(staff)">{{ staff.is_active ? 'Disable' : 'Enable' }}</button>&nbsp;&nbsp;
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination-container">
+        <pagination-controls (pageChange)="staff = $event"></pagination-controls>
+    </div>
+</div>
+<router-outlet></router-outlet>

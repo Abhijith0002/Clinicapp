@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 class="text-secondary">Test List</h1><button class="home-button" [routerLink]="['/labtechnician/labdashboard']">Go back</button>
+    
+      <table class="table">
+        <tbody>
+          <tr class="">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Active</th>
+            <th>Action</th>
+
+           
+           
+            
+
+          </tr>
+          <tr *ngFor="let p of labTechniciantService.tests | paginate:{itemsPerPage:5,currentPage:p} ">
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.is_active}}</td>
+            <td>
+              <div class="btn-group" role="group">
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteTest(p.id)">Delete</button>
+                </div>
+                &nbsp;
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-primary" (click)="updateTests(p)">Edit</button>
+                </div>
+               
+            </div>
+
+
+          </td>
+          <tr>
+           
+            
+         
+        </tbody>
+      </table>
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>

@@ -1,0 +1,75 @@
+<div class="container">
+    <a [routerLink]="['/pharmacist/medicine-list']" class="btn home-button">Go Back</a>
+    <h3 class="text-secondary">Edit Medicines</h3>
+    <hr>
+    <form name="formposts" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+            <input type="hidden" readonly name="id" [(ngModel)]="pharmacistservice.formpostdata.id">
+        </div>
+        <div class="form-group">
+            <label>Medicine name:</label>
+            <input type="text" name="medicine_name" #medicine_name="ngModel" [(ngModel)]="pharmacistservice.formpostdata.medicine_name"
+                class="form-control" placeholder="Enter the medicine name" minlength="3" maxlength="25" required readonly="true">
+            <div class="validation-error" *ngIf="medicine_name.touched && medicine_name.invalid">
+                <div>Medicine name is required</div>        
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input type="text" name="description" #description="ngModel" [(ngModel)]="pharmacistservice.formpostdata.description"
+                class="form-control" placeholder="Enter the description"  required readonly="true">
+            <div class="validation-error" *ngIf="description.touched && description.invalid">
+                <div>Description is required</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Stock quantity:</label>
+            <input type="number" name="stock_quantity" #stock_quantity="ngModel" [(ngModel)]="pharmacistservice.formpostdata.stock_quantity"
+                class="form-control" placeholder="Enter the  stock quantity"  required>
+            <div class="validation-error" *ngIf="stock_quantity.touched && stock_quantity.invalid">
+                <div>Stock quantity  is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="number" name="price_per_unit" #price_per_unit="ngModel" [(ngModel)]="pharmacistservice.formpostdata.price_per_unit"
+                class="form-control" placeholder="Enter the price" minlength="3" maxlength="25" required>
+            <div class="validation-error" *ngIf="price_per_unit.touched && price_per_unit.invalid">
+                <div>Price per unit is required</div>
+            </div>
+        </div>
+        <br>
+        <!-- <div class="form-group">
+            <label>select category name:</label>
+            <select name="category" id="category" class="form-control" required 
+            #category="ngModel" [(ngModel)]="postservice.formpostdata.category">
+                <option value="0" disabled>choose category</option>
+                <option *ngFor="let cat of postservice.categorys" value="{{cat.id}}">{{ cat.title }}</option>
+            </select>
+            <div class="validation-error" *ngIf="category.touched && category.invalid">
+                <div>category is required</div>
+        </div>
+        </div> -->
+        <br>
+        <div class="form-group">
+            <label>Is Active:</label>
+            <div class="toggle-switch">
+                <input type="checkbox" name="is_active" #is_active="ngModel" 
+                    [(ngModel)]="pharmacistservice.formpostdata.is_active"
+                    id="is_active_toggle" required>
+                <label for="is_active_toggle" class="toggle-label"></label>
+            </div>
+            <div class="validation-error" *ngIf="is_active.touched && is_active.invalid">
+                <div>Is Active is required</div>
+            </div>
+        </div>
+        
+        <br>
+        <div class="form-group">
+            <button type="submit" [disabled]="!(form.valid && form.dirty)" class="btn btn-lg btn-primary form-control btn-update">Update</button>
+
+        </div>
+    </form>
+</div>

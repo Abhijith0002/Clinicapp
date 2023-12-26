@@ -1,0 +1,41 @@
+<div class="container">
+    <h1 class="text-secondary">Test Report List</h1><button class="home-button" [routerLink]="['/labtechnician/labdashboard']">Go back</button>
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>Report Id</th>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Tests</th>
+            <th>Tests Preapred By</th>
+            <th>Action</th>
+
+
+          </tr>
+          <tr *ngFor="let p of labTechniciantService.labreport | paginate:{itemsPerPage:5,currentPage:p}">
+            <td>{{p.lab_report_id}}</td>
+            <td>{{p.patient_name}}</td>
+            <td>{{p.doctor_name}}</td>
+            <td> <div *ngFor="let test of p.tests_info">
+              <p>{{ test.name }}</p>
+          </div></td>
+            <td>{{p.staff}}</td>
+
+            <td>
+              <div class="btn-group" role="group">
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-primary" (click)="viewReport(p)">Bill</button>
+                </div>
+               
+            </div>
+
+
+          </td>
+          <tr>
+        </tbody>
+      </table>
+      <br>
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>

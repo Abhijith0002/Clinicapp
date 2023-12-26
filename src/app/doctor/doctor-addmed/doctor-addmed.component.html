@@ -1,0 +1,49 @@
+<!-- prescription-form.component.html -->
+<div class="container">
+  <h3 class="text-success">Add Medicine</h3>
+  <hr>
+
+<form name="frmPosts" #form="ngForm" autocomplete="off"
+(ngSubmit)="onSubmit(form)">
+<div class="form-group">
+<input type="hidden" readonly name="id" [(ngModel)] = "doctorService.formPrescriptionDetailData.id">
+</div>
+
+<div>
+<label for="medicinePrescription">Medicine Prescription:</label>
+<input type="text" [(ngModel)]="doctorService.formPrescriptionDetailData.medicine_prescription" name="medicine_prescription" required>
+</div>
+
+  <label for="medicineName">Medicine Name:</label>
+  <select [(ngModel)]="doctorService.formPrescriptionDetailData.medicine" name="medicine" required>
+    <option *ngFor="let p of doctorService.medicines" [value]="p.id">{{ p.medicine_name }}</option>
+  </select>
+
+<div>
+<label for="dosage">Dosage:</label>
+<input type="text" [(ngModel)]="doctorService.formPrescriptionDetailData.dosage" name="dosage" required>
+</div>
+
+<div>
+<label for="timeOfConsumption">Time of Consumption:</label>
+<input type="text" [(ngModel)]="doctorService.formPrescriptionDetailData.time_of_consumption" name="time_of_consumption" required>
+</div>
+
+<div>
+<label for="days">Number of Days:</label>
+<input type="text" [(ngModel)]="doctorService.formPrescriptionDetailData.days" name="days" required>
+</div>
+<div class="row">
+   
+<div class="col-md-6">
+  <a role="button">
+    <button type="submit">Add More</button>
+  </a>
+</div>
+<div class="col-md-6">
+  <a [routerLink]="['/doctor/doctordashboard']" role="button">
+      <button class="btn btn-danger w-100 mb-2" type="submit">Cancel</button>
+  </a>
+</div>
+</div>
+</form>

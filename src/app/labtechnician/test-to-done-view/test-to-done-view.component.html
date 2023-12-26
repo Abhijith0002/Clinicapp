@@ -1,0 +1,19 @@
+
+<div *ngIf="medicineHistory" class="profile-container">
+  <h3 class="text-secondary">Test Prescription</h3><button class="home-button" [routerLink]="['/labtechnician/test_to_done']">Go back</button>
+  <div class="profile-info">
+    <hr>
+    <hr>
+    <p>Patient Name: {{ medicineHistory.patient_name }}</p>
+    <p>Consulted Doctor: {{ medicineHistory.doctor_name }}</p>
+    <p>Date of Visit: {{ medicineHistory.dateofvisit | date:'short' }}</p>
+    <p>Tests Prescribed by Doctor: {{ medicineHistory.choose_test.join(', ') }}</p>
+  <div class="form-group print-button-container">
+    <a [routerLink]="['/labtechnician/test_report']" role="button">
+
+      <button class="btn btn-secondary w-100 mb-2" name="submit" type="submit">Add Report</button>
+    </a>
+    
+    
+</div>
+</div>

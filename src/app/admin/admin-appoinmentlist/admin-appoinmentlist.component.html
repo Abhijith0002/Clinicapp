@@ -1,0 +1,23 @@
+<button class="home-button" [routerLink]="['/admin/admindashboard']">Go back</button>
+<div class="container">
+    <h1>Appointments</h1>
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>TOKEN ID</th>
+            <th>Patient name</th>
+            <th>Doctor appointed</th>
+            <th>Date of visit</th>
+          </tr>
+          <tr *ngFor="let p of adminService.appointments | paginate:{itemsPerPage:5,currentPage:p}">
+            <td>{{p.token}}</td>
+            <td>{{p.patient_name}}</td>
+            <td>{{p.doctor_name}}</td>
+            <td>{{p.date_of_visit}}</td>
+          <tr>
+        </tbody>
+      </table><br>
+      <div class="pagination-controls">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+   
+    </div>

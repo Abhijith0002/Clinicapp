@@ -1,0 +1,50 @@
+
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<section class="container information-processing-form rounded-2">
+  <div class="row d-flex align-items-center">
+    <div class="col-sm-6 d-block">
+      <img src="https://www.klevvrtech.com/assets/img/query-img.webp" alt="banner left form" width="100%" class="rounded-5">
+    </div>
+    <div class="col pt-5">
+      <h3 class="text-center">Sign In</h3>
+      <div class="order-login text-center">
+        <a href="#"><i class='bx bxl-google order-login-icon text-danger'></i></a>
+        <a href="#"><i class='bx bxl-github order-login-icon text-danger'></i></a>
+        <a href="#"><i class='bx bxl-facebook order-login-icon text-danger'></i></a>
+      </div>
+      <span class="d-block text-center">or</span>
+      <form [formGroup] ="loginForm" (ngSubmit)="loginCredentials()" class="p-5">
+        <div class="form-floating mb-3">
+          <input id="username" type="username" name="username" formControlName="username" class="form-control shadow-none border-danger" required autocomplete="email" autofocus placeholder="...">
+          <label for="username" class="text-black-50">Enter your Username.</label>
+
+        </div>
+        <div class="validation-error" *ngIf="isSubmitted && formControls['username'].errors">
+            Username is invalid or required
+        </div>
+
+        <div class="form-floating mb-3">
+          <input id="password" type="password" name="password" formControlName="password" class="form-control shadow-none border-danger" placeholder="...">
+          <label for="password" class="text-black-50">Enter your password.</label>
+
+        </div>
+        <div class="validation-error" *ngIf="isSubmitted && formControls['password'].errors">
+            password is required
+        </div>
+
+      
+
+        <label class="check-box mb-3">
+          <input class="form-check-input shadow-none" type="checkbox" name="remember" id="remember">
+          <span for="remember">Remember Me.</span>
+        </label>
+        <button class="btn btn-danger w-100 mb-2" type="submit" name="submit">Sign In</button>
+        <div class="validation-error" *ngIf="error">
+            {{error}}
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</section>

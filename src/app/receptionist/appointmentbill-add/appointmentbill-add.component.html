@@ -1,0 +1,96 @@
+<button class="btn btn-sm btn-outline-success"  [routerLink]="['/receptionist/recepdashboard']">Home</button>
+
+	<body>
+		
+		<div class="invoice-box" *ngIf="appointment">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice :{{ appointment.bill_no }}<br />
+									Date :{{appointment.date_of_visit}}<br />
+									
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									Sparksuite, Inc.<br />
+									12345 Sunny Road<br />
+									Sunnyville, CA 12345
+								</td>
+								<td>
+									Patient Name:{{ appointment.patient_name }} <br />
+									Consulting Doctor : {{ appointment.doctor_name }} <br />
+									Token No: {{ appointment.token }}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="heading">
+					<td>Department-Reception</td>
+					<td>{{ appointment.bill_no }}</td>
+				</tr>
+				<tr class="details">
+					<td>MRD No: 23/0001233
+						<br>
+						GST No: 32AAECT1159Q1ZI
+					</td>
+					<td></td>
+				</tr>
+				<tr class="heading">
+					<td>Item</td>
+					<td>Price</td>
+				</tr>
+				<tr class="item">
+					<td>Consultation Fee</td>
+					<td>${{ appointment.consultation_fee }}</td>
+				</tr>
+				<tr class="item last">
+					<td>Gst</td>
+					<td>$00.00</td>
+				</tr>
+				<tr class="total">
+					<td></td>
+					<td>Total:${{ appointment.consultation_fee }}</td>
+				</tr>
+			</table>
+		
+	
+	
+			
+		</div>
+		<div class="center-button">
+			<input class="print-all-page" type="button" value="Print this page" onClick="window.print()">
+		</div>
+		<br>
+	<script>
+
+				
+	function printDiv(divName) {
+	const printSection = document.getElementById(divName).innerHTML;
+	let view = window.open();
+	view.document.write(printSection);
+	view.print();
+	view.close();
+}
+			</script>
+
+		
+
+
+		
+
+	</body>

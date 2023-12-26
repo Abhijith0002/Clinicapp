@@ -1,0 +1,93 @@
+<button class="home-button" [routerLink]="['/labtechnician/report_list']">Go back</button>
+<br>
+<body>
+    <div class="invoice-box" *ngIf="labreport">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png" style="width: 100%; max-width: 300px" />
+                            </td>
+
+                            <td>
+                                Invoice :{{ labreport.test_bill_id }}<br />
+                                Date :<br />
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Sparksuite, Inc.<br />
+                                12345 Sunny Road<br />
+                                Sunnyville, CA 12345
+                            </td>
+                            <td>
+                                Patient Name:{{ labreport.patient_name }} <br />
+                                Consulting Doctor : {{labreport.doctor_name }} <br />
+                                Token No: {{ labreport.test_bill_id }}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>Department-Laboratory</td>
+                <td>{{ labreport.test_bill_id }}</td>
+            </tr>
+            <tr class="details">
+                <td>MRD No: 23/0001233
+                    <br>
+                    GST No: 32AAECT1159Q1ZI
+                </td>
+                <td></td>
+            </tr>
+            <tr class="heading">
+                <td>Completed Tests</td>
+                <td>Price</td>
+            </tr>
+            <tr class="item">
+
+                <td> <div *ngFor="let test of labreport.tests_info">
+                    <p>{{ test.name }}</p>
+                </div></td>
+
+                <td> <div *ngFor="let test of labreport.tests_info">
+                    <p> {{ test.price }}</p>
+                </div></td>
+                <tr class="item last">
+                    <td>Gst</td>
+                    <td>$00.00</td>
+            </tr>
+            <tr class="total">
+                <td>Total</td>
+            </tr>
+        </table>
+        <div class="center-button">
+            <input class="print-all-page" type="button" value="Print this page" onClick="window.print()">
+        </div>
+        
+    <script>
+
+                
+    function printDiv(divName) {
+    const printSection = document.getElementById(divName).innerHTML;
+    let view = window.open();
+    view.document.write(printSection);
+    view.print();
+    view.close();
+}
+            </script>
+    </div>
+    
+
+    
+</body>
+<br>

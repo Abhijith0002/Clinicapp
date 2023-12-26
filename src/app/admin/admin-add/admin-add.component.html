@@ -1,0 +1,122 @@
+<br><br><a class="home-button" [routerLink]="['/admin/admindashboard']">Go Back</a>
+<div class="container">
+    <h3 class="text-secondary">Add Staff</h3>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name">
+          <div *ngIf="addForm.get('name')!.hasError('required') && addForm.get('name')!.touched"  class="error-message">
+            Name is required.
+          </div>
+        </div>
+      
+        <div>
+          <label for="date_of_birth">Date of Birth:</label>
+          <input type="date" id="date_of_birth" formControlName="date_of_birth">
+          <div *ngIf="addForm.get('date_of_birth')!.hasError('required') && addForm.get('date_of_birth')!.touched"  class="error-message">
+            Date of Birth is required.
+          </div>
+          <div *ngIf="addForm.get('date_of_birth')?.hasError('age')"  class="error-message">
+            Age should be greater than 18 and less than 50.
+          </div>    
+        </div>
+      
+        <div>
+          <label for="age">Age:</label>
+          <input type="number" id="age" formControlName="age" [attr.disabled]="true">
+          <div *ngIf="addForm.get('age')!.hasError('required') && addForm.get('age')!.touched"  class="error-message">
+            Age is required.
+          </div>
+        </div>
+      
+        <div>
+          <label for="gender">Gender:</label>
+          <select id="gender" formControlName="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+            <!-- Add more options if needed -->
+          </select>
+          <div *ngIf="addForm.get('gender')!.hasError('required') && addForm.get('gender')!.touched" class="error-message">
+            Gender is required.
+          </div>
+        </div>
+      
+        <div>
+          <label for="role">Role:</label>
+          <select id="role" formControlName="role">
+              <option *ngFor="let roleOption of roleOptions" [value]="roleOption.value">{{ roleOption.label }}</option>
+          </select>
+          <div *ngIf="addForm.get('role')!.hasError('required') && addForm.get('role')!.touched" class="error-message">
+              Role is required.
+          </div>
+      </div>
+    
+      <div *ngIf="addForm.get('role')!.value === 'Doctor'">
+        <div>
+          <label for="specialization">Specialization:</label>
+          <input type="text" id="specialization" formControlName="specialization">
+          <div *ngIf="addForm.get('specialization')!.hasError('required') && addForm.get('specialization')!.touched" class="error-message">
+            Specialization is required.
+          </div>
+        </div>
+    
+        <div>
+          <label for="consultation_fee">Consultation Fee:</label>
+          <input type="number" id="consultation_fee" formControlName="consultation_fee">
+          <div *ngIf="addForm.get('consultation_fee')!.hasError('required') && addForm.get('consultation_fee')!.touched"  class="error-message">
+            Consultation Fee is required.
+          </div>
+        </div>
+      </div>
+      
+        <div>
+          <label for="phone_number">Phone Number:</label>
+          <input type="tel" id="phone_number" formControlName="phone_number">
+          <div *ngIf="addForm.get('phone_number')!.hasError('required') && addForm.get('phone_number')!.touched"  class="error-message">
+            Phone Number is required.
+          </div>
+          <div *ngIf="addForm.get('phone_number')!.hasError('pattern')"  class="error-message">
+            Please enter a valid phone number.
+          </div>
+        </div>
+      
+        <div>
+          <label for="date_of_joining">Date of Joining:</label>
+          <input type="date" id="date_of_joining" formControlName="date_of_joining">
+          <div *ngIf="addForm.get('date_of_joining')!.hasError('required') && addForm.get('date_of_joining')!.touched" class="error-message">
+            Date of Joining is required.
+          </div>
+          <div *ngIf="addForm.get('date_of_joining')!.hasError('dateOfJoining') && addForm.get('date_of_joining')!.touched" class="error-message">
+            Please select only today or tomorrow for Date of Joining.
+          </div>
+        </div>
+      
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username">
+          <div *ngIf="addForm.get('username')!.hasError('required') && addForm.get('username')!.touched"  class="error-message">
+            Username is required.
+          </div>
+        </div>
+      
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" #passwordInput>
+          <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility()"> <label for="showPassword">Show Password</label>
+          <div *ngIf="addForm.get('password')!.hasError('required') && addForm.get('password')!.touched" class="error-message">
+            Password is required.
+          </div>
+        </div>
+      
+        <div>
+          <label for="is_active">Is Active:</label>
+          <input type="checkbox" id="is_active" formControlName="is_active">
+        </div>
+      
+        <div>
+          <button type="submit" [disabled]="addForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+    <br><br>

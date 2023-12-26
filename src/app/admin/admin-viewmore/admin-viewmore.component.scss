@@ -1,0 +1,32 @@
+.profile-container {
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .home-button {
+    position: absolute;
+    top: 9%;
+    right: 10%;
+    padding: 3px;
+    font-size: 20px;
+    border: 1px solid #34dbdb;
+    color:rgb(154, 27, 193);
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+ 
+  }
+  
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }

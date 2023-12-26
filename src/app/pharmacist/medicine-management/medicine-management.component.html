@@ -1,0 +1,33 @@
+<div class="container"> 
+    <a [routerLink]="['/pharmacist/pharmacistdashboard']" role="button" class="home-button">home</a><br>
+    <div class="header">
+        <div class="form-control">
+            <input class="form-control" type="text" placeholder="Enter text here..." [(ngModel)]="searchTerm">
+        </div>
+    </div>   
+    <table>
+        <thead>
+            <th>id</th>
+            <th>medicine name</th>
+            <th>Description</th>
+            <th>stock quantity</th>
+            <th>price per unit</th>
+            <th>is active</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of pharmacistservice.medicines | filter:searchTerm | paginate: { itemsPerPage: 5, currentPage: p} ">
+                <td>{{p.id}}</td>
+                <td>{{p.medicine_name}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.stock_quantity}}</td>
+                <td>{{p.price_per_unit}}</td>
+                <td>{{p.is_active}}</td>
+            </tr>
+        </tbody>   
+    </table>
+    
+    <div class="footer">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

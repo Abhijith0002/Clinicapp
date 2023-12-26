@@ -1,0 +1,152 @@
+<div class="container">
+  <h3 class="text-secondary">Edit Patient</h3>
+  <hr>
+
+
+
+  <form name="frmPosts" #form="ngForm" autocomplete="off"
+      (ngSubmit)="onSubmit(form)">
+<div class="form-group">
+  <input type="hidden" readonly name="id" [(ngModel)] = "receptionistService.formPatientsData.id">
+</div>
+
+<div class="form-group">
+  <label>Registration Number</label>
+  <input name="registernumber" #registernumber="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.registernumber"
+  class="form-control shadow-none border-success" readonly>
+  </div>
+  <br>
+
+<div class="form-group">
+  <label>Full Name</label>
+  <input name="fullname" #fullname="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.fullname"
+  class="form-control shadow-none border-success" placeholder="Enter Full Name" minlength="3"
+  maxlength="25" pattern="[a-zA-Z ]+" required>
+  <div class="validation-error" *ngIf="fullname.touched && fullname.errors">
+      <div *ngIf="fullname.errors['required']">Full Name is required</div>
+      <div *ngIf="fullname.errors['pattern']">Only alphabets and spaces are allowed</div>
+  </div>
+</div>
+<br>
+
+<div class="form-group">
+  <label>Gender</label>
+  <select name="gender" #gender="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.gender"
+  class="form-control shadow-none border-success" required>
+      <option value="" disabled>Select Gender</option>
+      <option *ngFor="let option of genderChoices" [value]="option.value">{{ option.label }}</option>
+  </select>
+  <div class="validation-error" *ngIf="gender.touched && gender.invalid">
+      <div>Gender is required</div>
+  </div>
+</div>
+<br>
+
+<div class="form-group">
+  <label>Date of Birth</label>
+  <input type="date" name="dateofbirth" #dateofbirth="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.dateofbirth"
+  class="form-control shadow-none border-success" placeholder="Enter Date of Birth"
+  (change)="calculateAge()" required
+  [max]="getCurrentDate()" readonly>
+  <div class="validation-error" *ngIf="dateofbirth.touched && dateofbirth.invalid">
+      <div *ngIf="dateofbirth.errors?.['required']">Date of Birth is required</div>
+      <div *ngIf="dateofbirth.errors?.['futureDate']">Please select a date in the past</div>
+      <div *ngIf="dateofbirth.errors?.['ageOutOfRange']">Please select a date within the last 120 years</div>
+  </div>
+</div>
+<br>
+
+<label>Age</label>
+<div class="form-group">
+  <input name="age" #age="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.age"
+  class="form-control shadow-none border-success" placeholder="" minlength="3" maxlength="25" required readonly>
+  <div class="validation-error" *ngIf="age.touched && age.invalid">
+      <div>Age is required</div>
+  </div>
+</div>
+<br>
+
+
+<div class="form-group">
+  <label>Blood Group</label>
+  <select name="bloodgroup" #bloodgroup="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.bloodgroup"
+  class="form-control shadow-none border-success" required>
+      <option value="" disabled>Select Blood Group</option>
+      <option *ngFor="let option of bloodGroupChoices" [value]="option.value">{{ option.label }}</option>
+  </select>
+  <div class="validation-error" *ngIf="bloodgroup.touched && bloodgroup.invalid">
+      <div>Blood Group is required</div>
+  </div>
+</div>
+<br>
+
+
+<label>Mobile</label>
+<div class="form-group">
+  <input name="mobile" #mobile="ngModel"
+  [(ngModel)]="receptionistService.formPatientsData.mobile"
+  class="form-control shadow-none border-success" placeholder="Enter Mobile" minlength="10" maxlength="10" required
+  pattern="[6-9]\d{9}">
+  <div class="validation-error" *ngIf="mobile.touched && mobile.invalid">
+      <div *ngIf="mobile.errors?.['required']">Mobile Number is required</div>
+      <div *ngIf="mobile.errors?.['pattern']">Enter a valid phone number</div>
+  </div>
+</div>
+<br>
+
+
+<label>Address:</label>
+<div class="form-floating mb-10">
+  <input name="address" #address="ngModel"
+      [(ngModel)]="receptionistService.formPatientsData.address"
+      class="form-control shadow-none border-success custom-address-input" placeholder="Enter Address">
+</div>
+<div class="validation-error" *ngIf="address.touched && address.invalid">
+  <div>Address is required</div>
+</div>
+<br>
+
+
+<div class="form-group">
+  <label>Email</label>
+  <input name="email" #email="ngModel"
+  [(ngModel)] = "receptionistService.formPatientsData.email"
+  class="form-control shadow-none border-success" placeholder="Enter E-mail" minlength="3"
+  maxlength="25" required>
+
+  <div class="validation-error" *ngIf="email.touched&& email.invalid">
+      <div>E-mail is required</div>
+  </div>
+</div>
+<br>
+
+
+
+
+
+<br>
+<div class="row">
+  <div class="col-md-6">
+      <div class="form-group" style="margin-left: 40px; margin-right: 20px;">
+          <a [routerLink]="['/receptionist/patient_list']" role="button">
+              <button class="btn btn-danger w-100 mb-2" type="submit">Cancel</button>
+          </a>
+      </div>
+      
+  </div>
+  <div class="col-md-6">
+      <div class="form-group" style="margin-left: 5px; margin-right: 40px;">
+          <button class="btn btn-success w-100 mb-2" name="submit" type="submit" [disabled]="!form.valid">Edit</button>
+      </div>
+      
+  </div>
+</div>
+
+  </form>
+</div>

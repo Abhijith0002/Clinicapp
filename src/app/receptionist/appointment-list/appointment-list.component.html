@@ -1,0 +1,45 @@
+<div class="container">
+  <button class="btn btn-sm btn-outline-success"  [routerLink]="['/receptionist/recepdashboard']">Go Back</button>
+    <h1 class="text-secondary">Appointments</h1>
+  
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>TOKEN ID</th>
+            <th>Patient name</th>
+            <th>Consulting Doctor</th>
+            <th>Date of visit</th>
+            <th>Action</th>
+            
+
+          </tr>
+          <tr *ngFor="let p of receptionistService.appointments | paginate:{itemsPerPage:5,currentPage:p}">
+            <td>{{p.token}}</td>
+            <td>{{p.patient_name}}</td>
+            <td>{{p.doctor_name}}</td>
+            <td>{{p.date_of_visit}}</td>
+            <td>
+              <div class="btn-group" role="group">
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteAppointment(p.id)">Delete</button>
+                </div>
+                &nbsp;
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-primary" (click)="viewAppointment(p)">view</button>
+                </div>
+            </div>
+
+
+          </td>
+          <tr>
+           
+            
+         
+        </tbody>
+      </table>
+      <br>
+      <div class="pagination-controls">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+   
+    </div>
+

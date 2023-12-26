@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-secondary">Pending Test</h1><button class="home-button" [routerLink]="['/labtechnician/labdashboard']">Go back</button>
+      <table class="rwd-table">
+        <tbody>
+          <tr class="">
+            <th>Patient Name</th>
+          <th>Consulted Doctor</th>
+          <th>Date of Visit</th>
+          <th>Selected Tests</th>
+          <th>Action</th>
+
+           
+           
+            
+
+          </tr>
+          <tr *ngFor="let history of doctorService.medicineHistoryList">
+            <td>{{ history.patient_name }}</td>
+          <td>{{ history.doctor_name }}</td>
+          <td>{{ history.dateofvisit | date:'short' }}</td>
+          <td>{{ history.choose_test.join(', ') }}</td>
+            <td>
+              <div class="btn-group" role="group">
+                <div class="col">
+                    <button class="btn btn-sm btn-outline-danger" (click)="viewTest(history)">View</button>
+                </div>
+                &nbsp;
+               
+            </div>
+
+
+          </td>
+          <tr>
+           
+            
+         
+        </tbody>
+      </table>
+    </div>
+
+
+

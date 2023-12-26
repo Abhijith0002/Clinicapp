@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAB TECHNICIAN Dashboard </title>
+</head>
+<body>
+  <header>
+    <h1>Pharmacist Dashboard</h1>
+  </header>
+
+
+  <main>
+    <div class="button-container">
+      <button [routerLink]="['/pharmacist/medicine-management']">Medicine Management</button>&nbsp;&nbsp;
+      <button [routerLink]="['/pharmacist/medicine-list']">Stock Management</button>&nbsp;&nbsp;
+      <button [routerLink]="['/pharmacist/medicine-bills_new']">Doctor Prescription</button>&nbsp;&nbsp;
+
+      <button (click)="logout()">Logout</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2023 Clinical Management System. All rights reserved.
+  </footer>
+</body>
+</html>
+
+<router-outlet></router-outlet>
+
+
+

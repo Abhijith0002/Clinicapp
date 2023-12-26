@@ -1,0 +1,99 @@
+<!-- Updated HTML Template -->
+<div class="container">
+    <a [routerLink]="['/pharmacist/pharmacistdashboard']" role="button" class="home-button">
+        Go back
+    </a>
+  <h1>Doctor Prescription</h1>
+
+    <div class="header">
+        <div class="form-control">
+            <input class="form-control" type="text" placeholder="Enter text here..." [(ngModel)]="searchTerm">
+
+</div> 
+  <table class="rwd-table">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Patient</th>
+              <th>Date</th>
+              <th>Prescriptions</th>
+              <th>Dosage</th>
+              <th>Time of Consumption</th>
+              <th>Days</th>
+              <th>Quantity</th> <!-- New column for Quantity -->
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let history of pharmacistservice.medicineHistoryList | filter:searchTerm | paginate: { itemsPerPage: 2, currentPage: p}">
+              <td>{{ history.id }}</td>
+              <td>{{ history.patient_name }}</td>
+              <td>{{ history.dateofvisit | date:'short' }}</td>
+              <td>
+                  <ng-container>
+                      <div class="prescription-details">
+                          <ul>
+                              <li *ngFor="let detail of history.prescription_detai">
+                                  <div class="medicine-details">
+                                      <span class="medicine-name">{{ detail.medicine_name }}</span>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </ng-container>
+              </td>
+              <td>
+                  <ng-container *ngFor="let prescription of history.prescription_detai">
+                      <ul>
+                          <li>
+                              <div class="medicine-details">
+                                  <span class="dosage">{{ prescription.dosage }}</span>
+                              </div>
+                          </li>
+                      </ul>
+                  </ng-container>
+              </td>
+              <td>
+                  <ng-container *ngFor="let prescription of history.prescription_detai">
+                      <ul>
+                          <li>
+                              <div class="medicine-details">
+                                  <span class="time-of-consumption">{{ prescription.time_of_consumption }}</span>
+                              </div>
+                          </li>
+                      </ul>
+                  </ng-container>
+              </td>
+              <td>
+                  <ng-container *ngFor="let prescription of history.prescription_detai">
+                      <ul>
+                          <li>
+                              <div class="medicine-details">
+                                  <span class="days">{{ prescription.days }}</span>
+                              </div>
+                          </li>
+                      </ul>
+                  </ng-container>
+              </td>
+              <td>
+                  <!-- Add a new span to display the calculated quantity -->
+                  <ng-container *ngFor="let prescription of history.prescription_detai">
+                      <ul>
+                          <li   >
+                              <div class="medicine-details">
+                                  <span class="quantity">{{ calculateQuantity(prescription) }}</span>
+                              </div>
+                          </li>
+                      </ul>
+                  </ng-container>
+              </td>
+              <td>
+                  <button class="btn btn-info" style="margin-left: 10px;" (click)="viewbills(history)">view more</button>
+              </td>
+          </tr>
+      </tbody>
+  </table><br>
+  <div class="footer">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>

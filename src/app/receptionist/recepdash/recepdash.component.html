@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Clinical Management System</title>
+</head>
+<body>
+  <header>
+    <h1>Receptionist Dashboard</h1>
+  </header>
+
+
+  <main>
+    <div class="button-container">
+      <button [routerLink]="['/receptionist/patient_add']">Add Patient</button>&nbsp;&nbsp;
+      <button [routerLink]="['/receptionist/patient_list']">List Patient</button>&nbsp;&nbsp;
+      <button [routerLink]="['/receptionist/appointment-add']">Add Appointment</button>&nbsp;&nbsp;
+      <button [routerLink]="['/receptionist/appointment-list']">List Appointment</button>&nbsp;&nbsp;
+
+      <button (click)="logout()">Logout</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2023 Clinical Management System. All rights reserved.
+  </footer>
+</body>
+</html>
+
+<router-outlet></router-outlet>

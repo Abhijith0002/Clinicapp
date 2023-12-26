@@ -1,0 +1,96 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background:#628696; /* Your desired color */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+  }
+
+  /* Different animation on hover */
+
+
+  @keyframes colorChange {
+    from {
+      color: #fff;
+    }
+    to {
+      color: #ff33b1;
+    }
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Adjust the height based on your design */
+  }
+
+  .button-container button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #2c3e50; /* Dark gray text color for better visibility */
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* New animation on button hover */
+
+
+  @keyframes colorChangeButton {
+    from {
+      color: #2c3e50; /* Dark gray text color */
+    }
+    to {
+      color: #ffccf1; /* Lighter pink color */
+    }
+  }
+
+  footer {
+    background:#628696; /* Your desired color */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: rainbowShadow 3s infinite linear;
+  }
+
+  @keyframes rainbowShadow {
+    0% {
+      text-shadow: 0 0 10px #34dbdb, 0 0 20px rgb(154, 27, 193);
+    }
+    25% {
+      text-shadow: 0 0 10px rgb(154, 27, 193), 0 0 20px #34dbdb;
+    }
+    50% {
+      text-shadow: 0 0 10px #34dbdb, 0 0 20px rgb(154, 27, 193);
+    }
+    75% {
+      text-shadow: 0 0 10px rgb(154, 27, 193), 0 0 20px #34dbdb;
+    }
+    100% {
+      text-shadow: 0 0 10px #34dbdb, 0 0 20px rgb(154, 27, 193);
+    }
+  }
