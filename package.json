@@ -2,6 +2,7 @@
   "name": "demo-cms-app",
   "version": "0.0.0",
   "scripts": {
+    "start": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng serve",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
