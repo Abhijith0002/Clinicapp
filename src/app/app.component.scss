@@ -1,0 +1,14 @@
+  /* Responsive styles for screens up to 600px wide */
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.5em;
+      }
+
+      section {
+        padding: 10px;
+      }
+
+      footer {
+        font-size: 0.8em;
+      }
+    }
