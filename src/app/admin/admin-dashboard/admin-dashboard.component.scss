@@ -93,3 +93,14 @@ body {
       text-shadow: 0 0 10px #34dbdb, 0 0 20px rgb(154, 27, 193);
     }
   }
+
+    @media only screen and (max-width: 600px) {
+      main {
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
