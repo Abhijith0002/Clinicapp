@@ -1,7 +1,42 @@
 .information-processing-form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.col-sm-6 {
+  display: none; /* Hide image column on larger screens */
+}
+
+/* Set the background image for small screens */
+@media (max-width: 767px) {
+  .col-sm-6 {
+    display: block;
+    background-image: url('https://www.klevvrtech.com/assets/img/query-img.webp');
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Set the desired height for the background */
   }
-  
+}
+
+/* Additional styling for form column */
+.col {
+  position: relative;
+}
+
+/* Adjustments for mobile screens */
+@media (max-width: 767px) {
+  .col {
+    order: 1;
+  }
+
+  .order-login {
+    margin-bottom: 20px;
+  }
+
+  .form-floating {
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
